@@ -1,7 +1,7 @@
 # TODO
 
 - [x] nonce
-- [ ] difficulty
+- [x] difficulty
 - [x] date
 - [x] merkel
 - [x] previous hash
