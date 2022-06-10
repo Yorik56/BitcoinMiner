@@ -6,32 +6,6 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitf03e220f4dac58b25ca8e4f2537e4865
 {
-    public static $files = array (
-        'ba448153faf7ec4e95af3e4f40fcd7bc' => __DIR__ . '/..' . '/langleyfoxall/math_eval/src/math_eval.php',
-    );
-
-    public static $prefixLengthsPsr4 = array (
-        'M' => 
-        array (
-            'MathParser\\' => 11,
-        ),
-        'L' => 
-        array (
-            'LangleyFoxall\\MathEval\\' => 23,
-        ),
-    );
-
-    public static $prefixDirsPsr4 = array (
-        'MathParser\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/mossadal/math-parser/src/MathParser',
-        ),
-        'LangleyFoxall\\MathEval\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/langleyfoxall/math_eval/src',
-        ),
-    );
-
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -39,8 +13,6 @@ class ComposerStaticInitf03e220f4dac58b25ca8e4f2537e4865
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf03e220f4dac58b25ca8e4f2537e4865::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf03e220f4dac58b25ca8e4f2537e4865::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInitf03e220f4dac58b25ca8e4f2537e4865::$classMap;
 
         }, null, ClassLoader::class);

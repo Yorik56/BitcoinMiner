@@ -6,6 +6,4 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'MathParser\\' => array($vendorDir . '/mossadal/math-parser/src/MathParser'),
-    'LangleyFoxall\\MathEval\\' => array($vendorDir . '/langleyfoxall/math_eval/src'),
 );
