@@ -1,0 +1,7 @@
+{
+    "require": {
+        "langleyfoxall/math_eval": "^2.0",
+      "ext-curl": "*",
+      "ext-bcmath": "*"
+    }
+}

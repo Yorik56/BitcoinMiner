@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => NULL,
+        'name' => '__root__',
+        'dev' => true,
+    ),
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => NULL,
+            'dev_requirement' => false,
+        ),
+        'langleyfoxall/math_eval' => array(
+            'pretty_version' => 'v2.0.0',
+            'version' => '2.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../langleyfoxall/math_eval',
+            'aliases' => array(),
+            'reference' => 'f650532d34834dc0af12535f77f194683249bc42',
+            'dev_requirement' => false,
+        ),
+        'mossadal/math-parser' => array(
+            'pretty_version' => 'v1.3.16',
+            'version' => '1.3.16.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mossadal/math-parser',
+            'aliases' => array(),
+            'reference' => '981b03ca603fd281049e092d75245ac029e13dec',
+            'dev_requirement' => false,
+        ),
+    ),
+);
