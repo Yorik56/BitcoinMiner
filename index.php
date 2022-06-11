@@ -5,27 +5,15 @@ require __DIR__ . '/vendor/autoload.php';
 
 class index
 {
-    const BLOCK_PARAMS = [
-        "DIFFICULTY" => "difficulty",
-        "DATE" => "timestamp",
-        "MERKEL_ROOT" => "merkleRoot",
-        "NONCE" => "",
-        "PRECEDENT_HASH" => "hash",
-        "VERSION" => "version",
-    ];
-
     const MAX_TARGET  = 0x00000000FFFF0000000000000000000000000000000000000000000000000000;
 
     private $height;
-    private string $heightHexadecimal;
-    private string $index;
-    private string $coefficient;
 
     private string $nonce;
     private string $difficulty;
     private string $date;
     private string $merkel;
-    private string $hash;
+    private string $previousBlockHash;
     private string $version;
 
     //mining bitcoins
@@ -33,29 +21,17 @@ class index
     {
 
         //get last mined bitcoin from api
-        $lastBitcoin = $this->getLastBlockMined();
+//        $lastBitcoin = $this->getLastBlockMined();
 
         //get last block header
-        $lastBlockHeader = $this->getLastBlockHeader($lastBitcoin->hash);
-
+//        $lastBlockHeader = $this->getLastBlockHeader($lastBitcoin->previousBlockHash);
+        $lastBlockHeader = $this->getLastBlockHeader("000000000000000000068643fa09c1fc5842db0a99cf337e72424d17bb0c9678");
         // Nonce
-        $this->nonce = $this->generateRandomBlockchainNonceWithALengthOf8();
+//        $this->nonce = $this->generateRandomBlockchainNonceWithALengthOf8();
+        $this->nonce = dechex(2340225404);
 
         //Height
         $this->height = $lastBlockHeader->height;
-
-        //Height Hexadecimal
-        $this->heightHexadecimal = $this->convertDecimalToHexa($this->height);
-
-        //Index
-        $this->index =  "0x" . $this->getFirstByte($this->heightHexadecimal);
-
-        //Coefficient
-        $this->coefficient =  "0x" . $this->getLastThreeBytes($this->heightHexadecimal);
-
-        //Target
-        /*var_dump($this->calculTarget($this->index, $this->coefficient));
-        print(" 4.0075266411612129867925142360828e+54");*/
 
         // Merkel
         $this->merkel = $lastBlockHeader->merkle_root;
@@ -64,24 +40,21 @@ class index
         $this->date = $lastBlockHeader->timestamp;
 
         // Previous Hash
-        $this->hash = $lastBlockHeader->previousblockhash;
+        $this->previousBlockHash = $lastBlockHeader->previousblockhash;
 
         // Version
         $this->version = dechex($lastBlockHeader->version);
 
         // Difficulty
-        $this->difficulty = $lastBlockHeader->difficulty;
+        $this->difficulty = dechex($lastBlockHeader->bits);
 
         return [
             "height" => $this->height,
-            "heightHexadecimal" => $this->heightHexadecimal,
-            "index" => $this->index,
-            "coefficient" => $this->coefficient,
             "nonce" => $this->nonce,
             "difficulty" => $this->difficulty,
             "date" => $this->date,
             "merkel" => $this->merkel,
-            "hash" => $this->hash,
+            "previousBlockHash" => $this->previousBlockHash,
             "version" => $this->version,
         ];
     }
@@ -103,14 +76,14 @@ class index
         return  json_decode($resp);
     }
 
-    private function getLastBlockHeader($hash)
+    private function getLastBlockHeader($previousBlockHash)
     {
         //Request curl to api to get last block header
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'https://blockstream.info/api/block/' . $hash,
-//            CURLOPT_URL => 'https://blockchain.info/rawblock/' . $hash,
+            CURLOPT_URL => 'https://blockstream.info/api/block/' . $previousBlockHash,
+//            CURLOPT_URL => 'https://blockchain.info/rawblock/' . $previousBlockHash,
             CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'
         ));
         $resp = curl_exec($curl);
@@ -249,17 +222,17 @@ $lastBlockHeader = (new index)->index();
                         "</b>";
                 ?>
             </p>
-            <h2>5: Le hash</h2>
+            <h2>5: Le hash du bloc precedent</h2>
             <p>
                 <?php
-                    echo "Lenght: " . strlen($lastBlockHeader["hash"]) . "<br>";
-                    $chain .= $lastBlockHeader["hash"];
+                    echo "Lenght: " . strlen($lastBlockHeader["previousBlockHash"]) . "<br>";
+                    $chain .= $lastBlockHeader["previousBlockHash"];
                     echo $lastBlockHeader["nonce"] .
                         $lastBlockHeader["difficulty"] .
                         (new index)->convertTimestampToHexadecimal($lastBlockHeader["date"]) .
                         $lastBlockHeader["merkel"] .
                         "<b>" .
-                            $lastBlockHeader["hash"] .
+                            $lastBlockHeader["previousBlockHash"] .
                         "</b>";
                 ?>
             </p>
@@ -272,7 +245,7 @@ $lastBlockHeader = (new index)->index();
                         $lastBlockHeader["difficulty"] .
                         (new index)->convertTimestampToHexadecimal($lastBlockHeader["date"]) .
                         $lastBlockHeader["merkel"] .
-                        $lastBlockHeader["hash"] .
+                        $lastBlockHeader["previousBlockHash"] .
                         "<b>" .
                             $lastBlockHeader["version"] .
                         "</b>";
