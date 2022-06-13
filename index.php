@@ -185,6 +185,18 @@ $lastBlockHeader = $blockMiner->index();
             p   {
                 word-break: break-all;
             }
+            code {
+                font-size: .875em;
+                color: #57d633;
+                word-wrap: break-word;
+            }
+            .codesource {
+                background: #000;
+                color: #fff;
+                margin: 20px 0;
+                padding: 30px;
+            }
+
         </style>
     </head>
     <body>
@@ -346,6 +358,11 @@ $lastBlockHeader = $blockMiner->index();
                 </div>
                 <div class="tab-pane fade show" id="menu7" role="tabpanel" aria-labelledby="menu7-tab">
                     <h3>7: Split de la chaîne en un tableau de x fois 2 caractères</h3>
+                    <div class="codesource">
+                        <code>$chain = <?= $chain ?></code>
+                        <br>
+                        <code>str_split($chain, 2);</code>
+                    </div>
                     <?php $chain = $blockMiner->splitChainWithLengthOf2($chain); ?>
                     <table class="table table-dark table-striped">
                         <tr>
@@ -362,6 +379,9 @@ $lastBlockHeader = $blockMiner->index();
                 </div>
                 <div class="tab-pane fade show" id="menu8" role="tabpanel" aria-labelledby="menu8-tab">
                     <h3>8: Inverse l'ordre des éléments du tableau</h3>
+                    <div class="codesource">
+                        <code>array_reverse()</code>
+                    </div>
                     <?php $chain = $blockMiner->reverseArray($chain); ?>
                     <table class="table table-dark table-striped">
                         <tr>
@@ -378,6 +398,9 @@ $lastBlockHeader = $blockMiner->index();
                 </div>
                 <div class="tab-pane fade show" id="menu9" role="tabpanel" aria-labelledby="menu9-tab">
                     <h3>9: Concatenation des éléments du tableau</h3>
+                    <div class="codesource">
+                        <code>implode()</code>
+                    </div>
                     <?php
                         $chain = $blockMiner->implodeArray($chain);
                         echo "Length: " . strlen($chain) . "<br>";
@@ -386,6 +409,11 @@ $lastBlockHeader = $blockMiner->index();
                 </div>
                 <div class="tab-pane fade show" id="menu10" role="tabpanel" aria-labelledby="menu10-tab">
                     <h3>10: Conversion de la chaîne hexadecimal en binaire</h3>
+                    <div class="codesource">
+                        <code>$chain = <?= $chain ?></code>
+                        <br>
+                        <code>hex2bin($chain)</code>
+                    </div>
                     <?php
                         $chain = $blockMiner->convertHexadecimalToBinary($chain);
                         echo "Length: " . strlen($chain) . "<br>";
@@ -394,6 +422,11 @@ $lastBlockHeader = $blockMiner->index();
                 </div>
                 <div class="tab-pane fade show" id="menu11" role="tabpanel" aria-labelledby="menu11-tab">
                     <h3>11: Hashage du binaire avec l'algorithme SHA256sum</h3>
+                    <div class="codesource">
+                        <code>$chain = <?= $chain ?></code>
+                        <br>
+                        <code>hash('sha256', $chain)</code>
+                    </div>
                     <?php
                         $chain = $blockMiner->hashWithSha256($chain);
                         echo "Length: " . strlen($chain) . "<br>";
@@ -402,6 +435,11 @@ $lastBlockHeader = $blockMiner->index();
                 </div>
                 <div class="tab-pane fade show" id="menu12" role="tabpanel" aria-labelledby="menu12-tab">
                     <h3>12: Conversion de la chaîne héxadecimale en binaire</h3>
+                    <div class="codesource">
+                        <code>$chain = <?= $chain ?></code>
+                        <br>
+                        <code>hex2bin($chain)</code>
+                    </div>
                     <?php
                         $chain = $blockMiner->convertHexadecimalToBinary($chain);
                         echo "Length: " . strlen($chain) . "<br>";
@@ -410,6 +448,11 @@ $lastBlockHeader = $blockMiner->index();
                 </div>
                 <div class="tab-pane fade show" id="menu13" role="tabpanel" aria-labelledby="menu13-tab">
                     <h3>13: Hashage du binaire avec l'algorithme SHA256sum</h3>
+                    <div class="codesource">
+                        <code>$chain = <?= $chain ?></code>
+                        <br>
+                        <code>hash('sha256', $chain)</code>
+                    </div>
                     <?php
                         $chain = $blockMiner->hashWithSha256($chain);
                         echo "Length: " . strlen($chain) . "<br>";
@@ -418,6 +461,11 @@ $lastBlockHeader = $blockMiner->index();
                 </div>
                 <div class="tab-pane fade show" id="menu14" role="tabpanel" aria-labelledby="menu14-tab">
                     <h3>14: Split de la chaîne en un tableau de x fois 2 caractères</h3>
+                    <div class="codesource">
+                        <code>$chain = <?= $chain ?></code>
+                        <br>
+                        <code>str_split($chain, 2);</code>
+                    </div>
                     <?php $chain = $blockMiner->splitChainWithLengthOf2($chain); ?>
                     <table class="table table-dark table-striped">
                         <tr>
@@ -434,6 +482,9 @@ $lastBlockHeader = $blockMiner->index();
                 </div>
                 <div class="tab-pane fade show" id="menu15" role="tabpanel" aria-labelledby="menu15-tab">
                     <h3>15: Inverse l'ordre des éléments du tableau</h3>
+                    <div class="codesource">
+                        <code>array_reverse()</code>
+                    </div>
                     <?php $chain = $blockMiner->reverseArray($chain); ?>
                     <table class="table table-dark table-striped">
                         <tr>
@@ -450,6 +501,9 @@ $lastBlockHeader = $blockMiner->index();
                 </div>
                 <div class="tab-pane fade show active" id="menu16" role="tabpanel" aria-labelledby="menu16-tab">
                     <h3>16: Concatenation des éléments du tableau</h3>
+                    <div class="codesource">
+                        <code>implode()</code>
+                    </div>
                     <?php
                         $chain = $blockMiner->implodeArray($chain);
                         echo "Length: " . strlen($chain) . "<br>";
